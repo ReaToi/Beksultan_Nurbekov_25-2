@@ -1,4 +1,4 @@
-"""OnlineStore URL Configuration
+"""blog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import hello, goodby, now_date
+from products.views import main_page_vief, product_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),
-    path('now_date/', now_date),
-    path('goodby/', goodby)
+    path('', main_page_vief),
+    path('products/', product_view),
+
 ]
+
+

@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from products.views import main_page_vief, product_view
+from products.views import main_page_vief, product_view, hashtags
+from django.conf.urls.static import static
+from OnlineStore import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_page_vief),
     path('products/', product_view),
+    path('hashtags/', hashtags)
 
 ]
 
-
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from products.models import Product, Hashtag
+from products.models import Product, Hashtag, Review
 
 
 # Create your views here.
@@ -30,7 +30,6 @@ def product_view(request):
 
 
 def hashtags(request):
-
     if request.method == 'GET':
         hashtags = Hashtag.objects.all()
         context = {
@@ -39,6 +38,14 @@ def hashtags(request):
         return render(request, 'hashtags/hashtags.html', context=context)
 
 
+def review_detail_view(request, id):
+    if request.method == 'GET':
+        product = Product.objects.get(id=id)
+        context = {
+            'product': product,
+            'comments': product.Review.all()
+        }
+        return render(request, 'products/detail.html', context=context)
 
 
 

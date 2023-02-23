@@ -1,0 +1,70 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block content %}
+    <style type="text/css">
+        .product {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .product > img {
+            width: 450px;
+            height: 400px;
+        }
+
+        .dates {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .comments {
+            margin-top: 50px;
+        }
+
+        .comment_block {
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #242b2e;
+
+        }
+
+        .comments_title {
+            font-size: 26px;
+            font-weight: bold;
+            width: 500px;
+            margin-top: 50px;
+        }
+    </style>
+
+    <div class="product">
+        <h1>{{ product.title }}</h1>
+        {% if product.image %}
+            <img class="post_image" src="/media/{{ product.image }}" alt="">
+        {% else %}
+            <img src="{% static 'no-signal-message.jpg' %}" alt="" class="post_image">
+        {% endif %}
+        <h5>{{ product.description }}</h5>
+        <div class="dates">
+            <h6>{{ product.create_date }}</h6>
+            <h6>{{ product.modefied_date }}</h6>
+        </div>
+
+        <div class="comments">
+            <h1>Comments:</h1>
+        {% for comment in comments %}
+            <div class="comments_title">
+            <h6>{{ comment.text }}</h6>
+                <p>{{ comment.create_date }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}

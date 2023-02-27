@@ -43,7 +43,7 @@ def review_detail_view(request, id):
         product = Product.objects.get(id=id)
         context = {
             'product': product,
-            'comments': product.review.all(),
+            'comments': product.Review.all(),
             'form': ReviewCreateForm
         }
         return render(request, 'products/detail.html', context=context)
@@ -51,16 +51,16 @@ def review_detail_view(request, id):
     if request.method == 'POST':
         data = request.POST
         form = ReviewCreateForm(data=data)
-        product = Review.objects.get(id=id)
+        product = Product.objects.get(id=id)
 
         if form.is_valid():
             Review.objects.create(
                 text=form.cleaned_data.get('text'),
-                product=product
+                product=product,
             )
             context = {
                 'product': product,
-                'comments': product.review.all(),
+                'comments': product.Review.all(),
                 'form': ReviewCreateForm
             }
         return render(request, 'products/detail.html', context=context)

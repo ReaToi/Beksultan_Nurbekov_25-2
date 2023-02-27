@@ -53,12 +53,19 @@
 
         <div class="comments">
             <h1>Comments:</h1>
+            <form action="/products/{{ product.id }}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Add Comment ">
+            </form>
         {% for comment in comments %}
-            <div class="comments_title">
-            <h6>{{ comment.text }}</h6>
-                <p>{{ comment.create_date }}</p>
+            <div class="comment_block">
+                <div class="comments_title">
+                    <h4>{{ comment.text }}</h4>
+                    <p>{{ comment.create_date }}</p>
+                </div>
+        {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
     </div>

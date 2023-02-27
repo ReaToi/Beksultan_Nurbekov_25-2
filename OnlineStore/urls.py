@@ -15,17 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from products.views import main_page_vief, product_view, hashtags, review_detail_view
+from products.views import main_page_vief, product_view, hashtags, review_detail_view, create_product_view
 from django.conf.urls.static import static
 from OnlineStore import settings
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls ),
     path('', main_page_vief),
     path('products/', product_view),
     path('hashtags/', hashtags),
-    path('products/<int:id>', review_detail_view)
+    path('products/<int:id>/', review_detail_view),
+    path('products/create/', create_product_view)
 
 ]
 

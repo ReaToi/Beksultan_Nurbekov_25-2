@@ -18,6 +18,7 @@ from django.urls import path
 from products.views import main_page_vief, product_view, hashtags, review_detail_view, create_product_view
 from django.conf.urls.static import static
 from OnlineStore import settings
+from users.views import register_view, login_view, logout_view
 
 
 urlpatterns = [
@@ -26,7 +27,11 @@ urlpatterns = [
     path('products/', product_view),
     path('hashtags/', hashtags),
     path('products/<int:id>/', review_detail_view),
-    path('products/create/', create_product_view)
+    path('products/create/', create_product_view),
+
+    path('users/register/', register_view),
+    path('users/login/', login_view),
+    path('users/logout/', logout_view)
 
 ]
 

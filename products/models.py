@@ -19,6 +19,7 @@ class Product(models.Model):
     modefied_date = models.DateField(auto_now=True)
     hashtags = models.ManyToManyField(Hashtag, blank=True)
 
+
     def __str__(self):
         return self.title
 
